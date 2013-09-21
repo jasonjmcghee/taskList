@@ -2,7 +2,7 @@ Created new project with:
     
     rails new tasks -T && cd tasks
     
-Modify Gemfile by adding :test and/or :development groups:
+Modify Gemfile by adding :test and/or :development groups. Make sure to add rails-rspec and any other gems:
 
     vim Gemfile
 
