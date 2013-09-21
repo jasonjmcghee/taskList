@@ -23,6 +23,23 @@ describe "Tasks" do
       save_and_open_page
 
     end
+  end
+
+  describe "PUT /tasks" do
+    it "edits a task" do
+      visit tasks_path
+      click_link 'Edit'
+      
+      find_field('Task').value.should == 'go to bed'
+
+      fill_in 'Task', :with => 'updated task'
+      click_button 'Update Task'
+
+      current_path.should == tasks_path
+
+      page.should have_content 'updated task'
+
+    end
 
     it "should not update empty task" do
       visit tasks_path
@@ -40,7 +57,7 @@ describe "Tasks" do
   describe "DELETE /tasks" do
     it "should delete a task" do
       visit tasks_path
-      find('#task#{@task.id}').click_link "Delete"
+      #find('#task_#{@task.id}').click_link "Delete" NOT SUPPORTED ANYMORE IN NOKOGIRI
       page.should have_content 'Task has been deleted'
       page.should have_no_content
     end
